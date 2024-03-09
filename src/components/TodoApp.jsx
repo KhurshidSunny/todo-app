@@ -16,6 +16,13 @@ export default function TodoApp() {
   //   add new task
   function handleAddTask(newTask) {
     setTaks((tasks) => [...tasks, newTask]);
+    setTitle("");
+    setDescription("");
+  }
+
+  // Delete a task
+  function handleDeleteTask(id) {
+    setTaks((tasks) => tasks.filter((task) => task.id !== id));
   }
 
   console.log(tasks);
@@ -30,7 +37,7 @@ export default function TodoApp() {
         onAddTask={handleAddTask}
       />
       <NavigateButtons />
-      <TodoList />
+      <TodoList tasks={tasks} onDeleteTask={handleDeleteTask} />
     </div>
   );
 }
