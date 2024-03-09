@@ -5,7 +5,7 @@ export default function InputEl({ title, placeholder }) {
       <input
         type="text"
         placeholder={placeholder}
-        className="px-3 py-2 rounded-md mt-2"
+        className="px-3 py-2 rounded-md mt-2 w-full"
       />
     </div>
   );

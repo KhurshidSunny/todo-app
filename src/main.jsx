@@ -5,7 +5,7 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <div className="flex items-center flex-col border h-screen">
+    <div className="flex items-center flex-col h-screen">
       <App />
     </div>
   </React.StrictMode>
