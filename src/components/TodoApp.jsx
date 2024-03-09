@@ -10,6 +10,8 @@ const initialTasks = [
 
 export default function TodoApp() {
   const [tasks, setTaks] = useState(initialTasks);
+  const [completedTasks, setCompletedTasks] = useState([]);
+  const [showCompleted, setShowCompleted] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -25,7 +27,14 @@ export default function TodoApp() {
     setTaks((tasks) => tasks.filter((task) => task.id !== id));
   }
 
-  console.log(tasks);
+  function handleAddToCompleted(Addedtask) {
+    setCompletedTasks((tasks) => [...tasks, Addedtask]);
+    setTaks((tasks) => tasks.filter((task) => task.id !== Addedtask.id));
+  }
+
+  function handleToggle() {
+    setShowCompleted((show) => !show);
+  }
 
   return (
     <div className="flex flex-col items-center justify-center bg-gray-900 rounded-md w-full   px-8 py-8 mt-4 shadow-xl">
@@ -36,8 +45,14 @@ export default function TodoApp() {
         description={description}
         onAddTask={handleAddTask}
       />
-      <NavigateButtons />
-      <TodoList tasks={tasks} onDeleteTask={handleDeleteTask} />
+      <NavigateButtons onToggle={handleToggle} />
+      <TodoList
+        tasks={tasks}
+        completedTasks={completedTasks}
+        onDeleteTask={handleDeleteTask}
+        onAddToCompleted={handleAddToCompleted}
+        showCompleted={showCompleted}
+      />
     </div>
   );
 }
