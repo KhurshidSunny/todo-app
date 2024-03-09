@@ -1,4 +1,9 @@
-export default function TodoTask({ task, onDeleteTask, onAddToCompleted }) {
+export default function TodoTask({
+  task,
+  onDeleteTask,
+  onAddToCompleted,
+  showCompleted,
+}) {
   return (
     <li className="flex justify-between px-4 py-4 bg-slate-800 rounded-md gap-2">
       {/* todo task content */}
@@ -15,11 +20,12 @@ export default function TodoTask({ task, onDeleteTask, onAddToCompleted }) {
         >
           🗑
         </p>
+
         <p
           className="text-xl cursor-pointer hover:bg-red-500 duration-150"
           onClick={() => onAddToCompleted(task)}
         >
-          ✔
+          {showCompleted ? "" : "✔"}
         </p>
       </div>
     </li>

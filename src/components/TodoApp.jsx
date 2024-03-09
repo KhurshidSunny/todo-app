@@ -25,6 +25,7 @@ export default function TodoApp() {
   // Delete a task
   function handleDeleteTask(id) {
     setTaks((tasks) => tasks.filter((task) => task.id !== id));
+    setCompletedTasks((tasks) => tasks.filter((task) => task.id !== id));
   }
 
   function handleAddToCompleted(Addedtask) {
@@ -45,7 +46,7 @@ export default function TodoApp() {
         description={description}
         onAddTask={handleAddTask}
       />
-      <NavigateButtons onToggle={handleToggle} />
+      <NavigateButtons onToggle={handleToggle} showCompleted={showCompleted} />
       <TodoList
         tasks={tasks}
         completedTasks={completedTasks}
